@@ -9,7 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.pizzaria.app.enums.TamanhaProduto;
+import com.pizzaria.app.enums.TamanhoProduto;
 
 import javax.persistence.GenerationType;
 
@@ -39,5 +39,5 @@ public class Produto {
   private int qtdFatias;
 
   @Enumerated(EnumType.STRING)
-  private TamanhaProduto tamanho;
+  private TamanhoProduto tamanho;
 }

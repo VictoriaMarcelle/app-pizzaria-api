@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.pizzaria.app.enums.TamanhaProduto;
+import com.pizzaria.app.enums.TamanhoProduto;
 import com.pizzaria.app.models.Produto;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +31,7 @@ public class ProdutoForm {
   private BigDecimal valor;
 
   @NotNull(message = "Campo tamanho é obrigatório")
-  private TamanhaProduto tamanho;
+  private TamanhoProduto tamanho;
 
   @NotNull(message = "Campo quantidade de fatias é obrigatório")
   private int qtdFatias;

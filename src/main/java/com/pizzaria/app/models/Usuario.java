@@ -1,9 +1,14 @@
 package com.pizzaria.app.models;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.pizzaria.app.dto.UsuarioDto;
 
@@ -19,7 +24,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Usuario {
+public class Usuario implements UserDetails {
   
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -40,5 +45,40 @@ public class Usuario {
 
   public UsuarioDto converterDto() {
     return new UsuarioDto(this);
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return null;
+  }
+
+  @Override
+  public String getPassword() {
+    return this.getSenha();
+  }
+
+  @Override
+  public String getUsername() {
+    return this.getEmail();
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
   }
 }
