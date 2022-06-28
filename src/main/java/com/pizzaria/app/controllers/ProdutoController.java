@@ -36,6 +36,17 @@ public class ProdutoController {
     return produtoService.findAll();
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<?> getById(@PathVariable Long id) {
+    Optional<Produto> produto = produtoService.findById(id);
+
+    if (produto.isPresent()) {
+      return ResponseEntity.ok(produto.get());
+    }
+
+    return ResponseEntity.notFound().build();
+  }
+
   @PostMapping
   @Transactional
   public ResponseEntity<?> save(@RequestBody @Valid ProdutoForm payload, UriComponentsBuilder uriBuilder) {
